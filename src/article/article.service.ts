@@ -25,7 +25,7 @@ export class ArticleService {
         return await this.articleRepository.find();
     }
 
-    delete(id: number) :Promise<DeleteResult>{
+    delete(id: number): Promise<DeleteResult>{
         return this.articleRepository.delete(id);
     }
 

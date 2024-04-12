@@ -10,6 +10,7 @@ import {
 import * as bcrypt from 'bcrypt';
 import {Exclude} from "class-transformer";
 import {ArticleEntity} from "../article/article.entity";
+import { SubEntity } from "src/sub/sub.entity";
 
 @Entity('users')
 export class User {
@@ -37,6 +38,9 @@ export class User {
 
     @OneToMany(()=> ArticleEntity, (aricleEntity: ArticleEntity) => aricleEntity.user)
     articles:ArticleEntity[];
+
+    @OneToMany(()=> SubEntity, (subEntity: SubEntity) => subEntity.user)
+    subs:ArticleEntity[];
 
 
     @BeforeInsert()

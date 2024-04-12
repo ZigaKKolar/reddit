@@ -8,10 +8,10 @@ import {
     UpdateDateColumn
 } from "typeorm";
 import {User} from "../user/user.entity";
-import {SubEntity} from "../sub/sub.entity";
+import {ArticleEntity} from "../article/article.entity";
 
-@Entity('articles')
-export class ArticleEntity {
+@Entity('subs')
+export class SubEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -25,11 +25,12 @@ export class ArticleEntity {
     updated_at: Date;
 
 
-    @ManyToOne(() => User, (user:User) => user.articles)
+    @ManyToOne(() => User, (user:User) => user.subs)
     @JoinColumn({name:'user_id'})
     user: User;
 
-    @ManyToOne(()=> SubEntity, (subEntity: SubEntity) => subEntity.articles)
-    @JoinColumn({name:'sub_id'})
-    sub:ArticleEntity[];
+    @OneToMany(()=> ArticleEntity, (aricleEntity: ArticleEntity) => aricleEntity.sub)
+    articles:ArticleEntity[];
+
+
 }
