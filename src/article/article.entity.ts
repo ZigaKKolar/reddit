@@ -31,5 +31,5 @@ export class ArticleEntity {
 
     @ManyToOne(()=> SubEntity, (subEntity: SubEntity) => subEntity.articles)
     @JoinColumn({name:'sub_id'})
-    sub:ArticleEntity[];
+    sub:ArticleEntity;
 }

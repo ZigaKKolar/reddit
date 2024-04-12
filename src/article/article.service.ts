@@ -16,7 +16,7 @@ export class ArticleService {
 
     async create(createArticle:CreateArticleDto){
         const user_id = 2;
-        const data = {...createArticle, user:{id:user_id}};
+        const data = {...createArticle, user:{id:user_id}, sub:{id:createArticle.sub_id}};
         const article = this.articleRepository.create(data);
         return await this.articleRepository.save(article);
     }
