@@ -7,6 +7,7 @@ import {User} from "./user/user.entity";
 import { ArticleModule } from './article/article.module';
 import {ConfigModule} from "@nestjs/config";
 import { SubModule } from './sub/sub.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [UserModule,
@@ -23,7 +24,8 @@ import { SubModule } from './sub/sub.module';
     autoLoadEntities: true,
   }),
     ArticleModule,
-    SubModule, ],
+    SubModule,
+    AuthModule, ],
   controllers: [AppController],
   providers: [AppService],
 })
