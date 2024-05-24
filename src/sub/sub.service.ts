@@ -12,15 +12,17 @@ export class SubService {
         private readonly subRepository:Repository<SubEntity>) {
     }
 
-    async create(createSub:CreateSubDto): Promise<SubEntity> {
-        const user_id = 2;
-        const data = {...createSub, user:{id:user_id}};
+    async create(createSub:CreateSubDto, userId: number): Promise<SubEntity> {
+        const data = {...createSub, user:{id: userId}};
         const sub = this.subRepository.create(data);
         return await this.subRepository.save(sub);
     }
 
     async readAll(): Promise<SubEntity[]>{
         return await this.subRepository.find();
+    }
+    async readOne(id:number): Promise<SubEntity>{
+        return await this.subRepository.findOneBy({id});
     }
 
     async update(id:number, updateSub:CreateSubDto){
